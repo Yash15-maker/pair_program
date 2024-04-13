@@ -6,6 +6,7 @@ import {
   integer,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "@auth/core/adapters";
+import { sql } from "drizzle-orm";
 
 export const testingSchema = pgTable("testingSchema", {
   id: text("id").notNull().primaryKey(),
@@ -63,3 +64,19 @@ export const verificationTokens = pgTable(
     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   })
 );
+
+export const room = pgTable("room", {
+  id: text("id")
+    .default(sql`gen_random_uuid()`)
+    .notNull()
+    .primaryKey(),
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  github: text("github"),
+  description: text("description"),
+  language: text("language").notNull(),
+});
+
+export type ROOM = typeof room.$inferSelect;
