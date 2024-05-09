@@ -18,9 +18,9 @@ import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   name: z.string().min(1).max(50),
-  github: z.string().min(1).max(50),
-  description: z.string().min(1).max(50),
-  language: z.string().min(1).max(50),
+  github: z.string().min(1),
+  description: z.string().min(1),
+  tagsLanguage: z.string().min(1),
 });
 
 const FormCreate = () => {
@@ -28,7 +28,7 @@ const FormCreate = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      language: "",
+      tagsLanguage: "",
       description: "",
       github: "",
     },
@@ -87,7 +87,7 @@ const FormCreate = () => {
         />
         <FormField
           control={form.control}
-          name="language"
+          name="tagsLanguage"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Language</FormLabel>
@@ -95,7 +95,7 @@ const FormCreate = () => {
                 <Input placeholder="shadcn" {...field} />
               </FormControl>
               <FormDescription>
-                Enter your Language using to code
+                Enter your Languages as a tag using to code.
               </FormDescription>
               <FormMessage />
             </FormItem>

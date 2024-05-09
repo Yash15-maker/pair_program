@@ -66,7 +66,7 @@ function AccountDropdown() {
             {session.data?.user?.name}
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="pt-2 dark:bg-gray-700 pl-3 cursor-pointer">
+        <DropdownMenuContent className="pt-2 dark:bg-gray-700 bg-gray-200 pl-3 cursor-pointer">
           <DropdownMenuItem
             className="cursor-pointer"
             onClick={() =>
@@ -114,9 +114,9 @@ export function Header() {
           className="flex gap-2 items-center text-xl hover:underline"
         >
           <Image
-            src="/public/icon-program-finder.png"
-            width="60"
-            height="60"
+            src="/icon-program-finder.png"
+            width="50"
+            height="50"
             alt="the icon of dev finder"
           />
           DevFinder
@@ -125,11 +125,11 @@ export function Header() {
         <nav className="flex gap-8">
           {isLoggedIn && (
             <>
-              <Link className="hover:underline" href="/browse">
+              <Link className="hover:underline" href="/view">
                 Browse
               </Link>
 
-              <Link className="hover:underline" href="/your-rooms">
+              <Link className="hover:underline" href="/yourRoom">
                 Your Rooms
               </Link>
             </>
