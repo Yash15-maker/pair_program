@@ -19,7 +19,7 @@ import Image from "next/image";
 
 const CardRoom = ({ room }: { room: ROOM }) => {
   return (
-    <Card className="shadow-sm rounded-2xl  text-center">
+    <Card className="shadow-lg rounded-2xl text-center">
       <CardHeader className="my-auto p-3">
         <CardTitle className="pt-3 px-3">{room.name}</CardTitle>
         <CardDescription className="pt-3 px-3">
@@ -56,40 +56,41 @@ async function page({
   };
 }) {
   const rooms = await getRooms(searchParams.search);
-
   const session = await getSession();
-
   return (
     <div className="container flex flex-col mx-auto">
-      <div className="flex justify-between items-center py-2">
+      <div className="flex justify-between items-center p-4">
         <h1 className="text-3xl mb-2">Find the Room</h1>
         <Button
           className="border border-gray-200 rounded-2xl cursor-pointer bg-white "
           asChild
         >
           {session?.user.name !== undefined ? (
-            <Link href="/create-room" className="flex gap-1">
+            <Link href="/create-room" className="flex gap-1 dark:bg-black">
               Create the Button
               <CiBookmarkPlus className="text-2xl" />
             </Link>
           ) : (
-            <h1>Please Sign In</h1>
+            <h1 className="flex gap-1 dark:bg-black">Please Sign In</h1>
           )}
         </Button>
       </div>
       <SearchBar />
-      <div className="grid pt-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3">
-        {rooms.length !== null ? (
+      <div className="grid pt-4 lg:grid-cols-2  grid-cols-1 gap-3">
+        {rooms.length !== null && session ? (
           rooms?.map((room) => {
             return <CardRoom room={room} key={room.id} />;
           })
         ) : (
-          <Image
-            src="/items_not.jpg"
-            height="50"
-            width="50"
-            alt="Not=found-image"
-          />
+          <div>
+            <Image
+              src="/items_not.jpg"
+              height="90"
+              width="100"
+              alt="Not=found-image"
+            />
+          </div>
+
         )}
       </div>
     </div>

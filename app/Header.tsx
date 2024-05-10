@@ -21,19 +21,34 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
+
 } from "@/components/ui/alert-dialog";
 import { useEffect, useState } from "react";
-// import { deleteAccountAction } from "./actions";
+import { deleteAccountAction } from "./action";
+import {
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "@/components/ui/menubar"
 
 function AccountDropdown() {
   const session = useSession();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <>
       <AlertDialog open={open} onOpenChange={setOpen}>
-        <AlertDialogContent>
+        <AlertDialogContent className="bg-white">
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription>
@@ -42,15 +57,16 @@ function AccountDropdown() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            {/* <AlertDialogAction
+            <AlertDialogCancel className="rounded-xl border-[2px] border-gray-300">Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-red-600 hover:bg-red-400 rounded-xl "
               onClick={async () => {
                 await deleteAccountAction();
                 signOut({ callbackUrl: "/" });
               }}
             >
               Yes, delete my account
-            </AlertDialogAction> */}
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
@@ -95,7 +111,7 @@ function AccountDropdown() {
 export function Header() {
   const session = useSession();
   const isLoggedIn = !!session.data;
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -115,14 +131,41 @@ export function Header() {
         >
           <Image
             src="/icon-program-finder.png"
-            width="50"
-            height="50"
+            width={isMobile ? "30" : "50"}
+            height={isMobile ? "30" : "50"}
             alt="the icon of dev finder"
           />
-          DevFinder
+          {isMobile ? <span className="text-[14px]">DevFinder</span> : "DevFinder"}
         </Link>
+        {isMobile && <div className='flex gap-1.5'><Menubar><MenubarMenu >
+          <MenubarTrigger className="border-b-[2px] pb-0.5 border-gray-200 rounded-xl p-0 text-[14px]">{session.data?.user.name}</MenubarTrigger>
+          <MenubarContent className="bg-white shadow-sm rounded-xl">
+            <MenubarItem>
+              <Link className="hover:underline" href="/yourRoom">
+                Your Rooms
+              </Link>
+            </MenubarItem>
+            <MenubarItem>
+              <Link className="hover:underline" href="/view">
+                Browse
+              </Link>
 
-        <nav className="flex gap-8">
+
+            </MenubarItem>
+            {/* <MenubarSeparator />
+            <ModeToggle />
+            <MenubarSeparator /> */}
+
+            <MenubarItem>
+              <Button onClick={() => signIn()} variant="link" className="py-1 px-0.5">
+                <LogInIcon className="mr-2 text-[10px]" /> Sign In
+              </Button>
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu></Menubar>
+          <ModeToggle /></div>}
+
+        {!isMobile && <nav className="flex gap-8">
           {isLoggedIn && (
             <>
               <Link className="hover:underline" href="/view">
@@ -134,9 +177,9 @@ export function Header() {
               </Link>
             </>
           )}
-        </nav>
+        </nav>}
 
-        <div className="flex items-center gap-4">
+        {!isMobile && <div className="flex items-center gap-4">
           {isLoggedIn && <AccountDropdown />}
           {!isLoggedIn && (
             <Button onClick={() => signIn()} variant="link">
@@ -144,8 +187,8 @@ export function Header() {
             </Button>
           )}
           <ModeToggle />
-        </div>
+        </div>}
       </div>
-    </header>
+    </header >
   );
 }

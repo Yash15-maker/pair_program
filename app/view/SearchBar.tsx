@@ -36,14 +36,16 @@ const SearchBar = () => {
   }, [search, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    if (values.search) {
+    const searchValue = values.search.toLowerCase();
+    if (searchValue) {
       router.push(`/view/?search=${values.search}`);
+
     } else {
       router.push("/view");
     }
   }
 
-  
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-2">
@@ -55,7 +57,7 @@ const SearchBar = () => {
               <FormControl>
                 <Input
                   {...field}
-                  className="w-[540px] rounded-2xl"
+                  className="lg:w-[580px] md:w-[400px] rounded-2xl"
                   placeholder="Filter rooms by keywords, such as typescript, next.js, python"
                 />
               </FormControl>
@@ -69,7 +71,7 @@ const SearchBar = () => {
           disabled={!form.getValues("search")}
           className="my-auto border border-gray-200 bg-gray-700 text-white hover:bg-gray-700 rounded-2xl  p-5"
         >
-          <SearchIcon className="mr-2" /> Search
+          <SearchIcon className="mr-2 text-md" /> <span>Search</span>
         </Button>
         {query.get("search") && (
           <Button
