@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#bg-image{
+    background-image: url('../public/Buld.jpg');
+    z-index: 0.5;
+    opacity:0.4
+}

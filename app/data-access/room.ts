@@ -1,7 +1,7 @@
 import { unstable_noStore } from "next/cache";
 import { db } from "../../db";
 import { eq, like } from "drizzle-orm";
-import { room } from "../../db/schema";
+import { ROOM, room } from "../../db/schema";
 import { getSession } from "@/lib/auth";
 
 export async function getRooms(search: string | undefined) {
@@ -36,4 +36,13 @@ export async function getUserRoom() {
 
 export async function deleteRoom(roomId: string) {
   await db.delete(room).where(eq(room.id, roomId));
+}
+
+export async function editRoom(roomData: ROOM) {
+  const updated = await db
+    .update(room)
+    .set(roomData)
+    .where(eq(room.id, roomData.id))
+    .returning();
+  return updated[0];
 }

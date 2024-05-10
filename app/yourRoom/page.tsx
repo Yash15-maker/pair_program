@@ -19,27 +19,17 @@ export default async function page() {
         </Button>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
-        {UserRooms.map((room) => {
-          return <UserRoomCard key={room.id} room={room} />;
-        })}
-      </div>
-      {/* {UserRooms.length === 0 && (
-        <div className="flex flex-col gap-4 justify-center items-center mt-24">
-          <Image
-            src="/no-data.svg"
-            width="200"
-            height="200"
-            alt="no data image"
-          />
-
-          <h2 className="text-2xl">You have no rooms</h2>
-
-          <Button asChild>
-            <Link href="/create-room">Create Room</Link>
-          </Button>
+      <div className="flex flex-col gap-3">
+        {UserRooms.length <= 0 ? <div className='relative h-screen w-full'>
+          <div id="bg-image" className='absolute inset-0 bg-cover bg-center z-0'></div>
+          <div className="absolute inset-0 flex items-center justify-center z-10">
+            <span className="2xl:text-5xl lg:text-2xl text-xl">No Rooms build the room</span>
+          </div>
         </div>
-      )} */}
+          : (UserRooms.map((room) => {
+            return <UserRoomCard key={room.id} room={room} />;
+          }))}
+      </div>
     </main>
   );
 }
