@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import React from "react"
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./provider";
@@ -6,7 +7,7 @@ import NextTopLoader from "nextjs-toploader";
 import { Header } from "./Header";
 
 const inter = Inter({ subsets: ["latin"] });
-
+const dateYear = new Date().getFullYear()
 export const metadata: Metadata = {
   title: "Pair Find || Coder",
   description: "A platform where you find you mate who can code with you",

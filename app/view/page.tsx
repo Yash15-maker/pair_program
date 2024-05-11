@@ -82,13 +82,60 @@ async function page({
             return <CardRoom room={room} key={room.id} />;
           })
         ) : (
-          <div>
-            <Image
+          <div className="flex flex-col gap-2">
+            {session ? <Image
               src="/items_not.jpg"
               height="90"
               width="100"
               alt="Not=found-image"
-            />
+            /> : <><div className="overlay"></div>
+
+              <div className="text">
+                <div className="wrapper">
+                  <div id="L" className="letter">S</div>
+                  <div className="shadow">S</div>
+                </div>
+                <div className="wrapper">
+                  <div id="I" className="letter">I</div>
+                  <div className="shadow">I</div>
+                </div>
+                <div className="wrapper">
+                  <div id="G" className="letter">G</div>
+                  <div className="shadow">G</div>
+                </div>
+                <div className="wrapper">
+                  <div id="H" className="letter">N</div>
+                  <div className="shadow">N</div>
+                </div>
+                <div className="wrapper">
+                  <div id="T" className="letter">I</div>
+                  <div className="shadow">I</div>
+                </div>
+                <div className="wrapper">
+                  <div id="N" className="letter">N</div>
+                  <div className="shadow">N</div>
+                </div>
+                <div className="wrapper">
+                  <div id="E" className="letter">D</div>
+                  <div className="shadow">D</div>
+                </div>
+                <div className="wrapper">
+                  <div id="S" className="letter">O</div>
+                  <div className="shadow">O</div>
+                </div>
+                <div className="wrapper">
+                  <div id="Stwo" className="letter">N</div>
+                  <div className="shadow">N</div>
+                </div>
+                <div className="wrapper">
+                  <div id="Stwo" className="letter">E</div>
+                  <div className="shadow">E</div>
+                </div>
+                <div className="wrapper">
+                  <div id="Stwo" className="letter">?</div>
+                  <div className="shadow">?</div>
+                </div>
+              </div></>}
           </div>
 
         )}

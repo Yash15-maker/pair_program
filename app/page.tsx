@@ -1,6 +1,10 @@
 import Link from "next/link";
+import Step from './tab/Tab';
+import React from 'react';
 
-export default function LandingPage() {
+export default async function LandingPage() {
+
+
   return (
     <div className="">
       <div className="relative isolate px-6 pt-14 lg:px-8">
@@ -47,7 +51,15 @@ export default function LandingPage() {
             }}
           />
         </div>
+
+
+
       </div>
+      <hr />
+      <Step />
+      <hr />
+
+
     </div>
   );
 }
