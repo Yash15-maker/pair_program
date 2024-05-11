@@ -8,6 +8,3 @@ Welcome to our Pair Programming Platform! This platform allows you to find a pai
 
 # Join a Room: Join an existing room to collaborate with others. Understand how to join a room on the platform and start coding together.
 
-Additional Information
-FAQ: Visit our FAQ section for answers to commonly asked questions.
-Contact Us: Reach out to us if you encounter any issues or have feedback.
