@@ -1,10 +1,7 @@
-import Link from "next/link";
 import Step from './tab/Tab';
 import React from 'react';
 
 export default async function LandingPage() {
-
-
   return (
     <div className="">
       <div className="relative isolate px-6 pt-14 lg:px-8">
@@ -29,14 +26,6 @@ export default async function LandingPage() {
               This platform is for sharing your screen and working with other
               random developers online so that you can work together
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link
-                href="/view"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Get started
-              </Link>
-            </div>
           </div>
         </div>
         <div
@@ -51,15 +40,17 @@ export default async function LandingPage() {
             }}
           />
         </div>
-
-
-
       </div>
       <hr />
       <Step />
       <hr />
-
-
+      <div className='flex flex-col p-4'>
+        <div className='flex justify-center font-[500] text-5xl p-3'>Upcoming Features</div>
+        <ol className='typewriter text-3xl '>
+          <li>Chat Feature</li>
+          <div> <li>Better UI and Better user experience</li></div>
+        </ol>
+      </div>
     </div>
   );
 }
