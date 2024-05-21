@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
-    <SessionProvider>
+    <SessionProvider basePath="/api/auth">
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
