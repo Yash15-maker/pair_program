@@ -65,17 +65,17 @@
 }
 
 
-.typewriter li {
+.typewriter {
 	
 	font-family: monospace;
 	overflow: hidden; 
-	border-right: .15em solid orange; 
+	border-right: .09em solid orange; 
 	white-space: nowrap; 
 	margin: 0 auto; 
 	letter-spacing: .15em; 
 	animation: 
-	  typing 3.5s steps(30, end),
-	  blink-caret .5s step-end infinite;
+	  typing 3.56s steps(30, end),
+	  blink-caret .96s step-end infinite;
   }
   
   
@@ -87,5 +87,5 @@
   
   @keyframes blink-caret {
 	from, to { border-color: transparent }
-	50% { border-color: orange }
+	50% { border-color: black }
   }

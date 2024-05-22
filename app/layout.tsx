@@ -26,8 +26,11 @@ export default function RootLayout({
           <Header />
           <NextTopLoader showSpinner={false} />
           <div className="xl:container">{children}</div>
+
         </Providers>
+
       </body>
+
     </html>
   );
 }

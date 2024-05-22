@@ -1,3 +1,4 @@
+import Form from './Form/Form';
 import Step from './tab/Tab';
 import React from 'react';
 
@@ -44,13 +45,10 @@ export default async function LandingPage() {
       <hr />
       <Step />
       <hr />
-      <div className='flex flex-col p-4'>
-        <div className='flex justify-center font-[500] text-5xl p-3'>Upcoming Features</div>
-        <ol className='typewriter text-3xl '>
-          <li>Chat Feature</li>
-          <div> <li>Better UI and Better user experience</li></div>
-        </ol>
-      </div>
+      {/* <div className='flex justify-around mt-5 pb-3'>
+        <h1>2</h1>
+        <Form />
+      </div> */}
     </div>
   );
 }
